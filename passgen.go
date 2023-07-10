@@ -16,7 +16,6 @@ func genPass(length int) string {
 }
 
 func randomFromChars(length int, chars string) string {
-	// rand.Int returns value in [0, max)
 	max := len(chars)
 	pass := ""
 
