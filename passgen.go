@@ -2,13 +2,17 @@ package main
 
 import (
 	"crypto/rand"
+	"flag"
 	"math/big"
 )
 
 const Chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+,.?/:;{}[]`~"
 
 func main() {
-	println(genPass(20))
+	length := flag.Int("l", 20, "password length")
+	flag.Parse()
+
+	println(genPass(*length))
 }
 
 func genPass(length int) string {
