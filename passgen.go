@@ -16,16 +16,12 @@ func main() {
 }
 
 func genPass(length int) string {
-	return randomFromChars(length, Chars)
-}
-
-func randomFromChars(length int, chars string) string {
-	max := len(chars)
+	max := len(Chars)
 	pass := ""
 
 	for i := 0; i < length; i++ {
 		n, _ := rand.Int(rand.Reader, big.NewInt(int64(max)))
-		pass = pass + string(chars[n.Int64()])
+		pass = pass + string(Chars[n.Int64()])
 	}
 
 	return pass
