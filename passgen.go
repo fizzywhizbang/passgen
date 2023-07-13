@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"math/big"
+	"os"
 )
 
 // allowed characters for password
@@ -13,9 +14,22 @@ const Chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#
 func main() {
 	//create flag for length
 	length := flag.Int("l", 20, "password length")
+	writeToFile := flag.Bool("f", false, "write to file")
 	flag.Parse()
-	fmt.Println(genPass(*length))
+	pass := genPass(*length)
+	if *writeToFile {
+		fileName := "password.txt"
+		f, err := os.Create(fileName)
+		if err != nil {
+			fmt.Println(err)
+		}
+		defer f.Close()
+		fmt.Println(pass, "written to", fileName)
+		f.WriteString(pass)
 
+	} else {
+		fmt.Println(pass)
+	}
 }
 
 // generate password
