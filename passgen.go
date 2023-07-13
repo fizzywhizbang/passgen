@@ -24,7 +24,7 @@ func main() {
 			fmt.Println(err)
 		}
 		defer f.Close()
-		fmt.Println(pass, "written to", fileName)
+		fmt.Println("your password is", pass, "and has been written to", fileName)
 		f.WriteString(pass)
 
 	} else {
